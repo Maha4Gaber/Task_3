@@ -1,0 +1,625 @@
+/*=============== Structure ===============
+  1- Root Var
+  2- General Style
+  3- HEADER & NAV
+  4- HOME
+  5- Slider
+  6- Filter
+  7- Image Animation
+  8- Crud
+  9- Contact Form
+  10- Products Page
+  11- Footer
+  12-----------Media---------------
+  -------------large--------------
+  ------------medium-------------
+  -----------small--------------
+*/
+/*=============== GOOGLE FONTS ===============*/
+@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600&display=swap');
+/*=============== 1- Root Var ===============*/
+:root {
+  --header-height: 3.5rem;
+  --main-color: #048697;
+  --sec-color: #FFB096;
+  --white-color: #fffef2;
+  --balck-color: #3D3B3A;
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --first-hue: 250;
+  --second-hue: 219;
+  --title-color: hsl(var(--second-hue), 15%, 95%);
+  --text-color: hsl(var(--second-hue), 8%, 75%);
+  --body-color: hsl(var(--second-hue), 48%, 8%);
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: 'Readex Pro', sans-serif;
+  --biggest-font-size: 1.75rem;
+  --h2-font-size: 1.25rem;
+}
+
+.light-theme
+{
+  --white-color: #3D3B3A;
+  --balck-color: #fffef2;
+  --title-color: #1e2125;
+  --text-color: #1e2125;  
+  --body-color: #ECF0F3;
+}
+
+/* Responsive typography */
+@media screen and (min-width: 968px) {
+  :root {
+    --h2-font-size: 1.5rem;
+  }
+}
+
+/*=============== 2- General Style ===============*/
+* {
+  box-sizing: border-box; padding: 0; margin: 0;
+}
+
+html { scroll-behavior: smooth; overflow-x: hidden;}
+
+body,button,input,textarea { font-family: var(--body-font);}
+
+body {
+  background-color: var(--body-color); color: var(--text-color); transition: .4s; /* for light mode animation */
+  text-align: right;
+}
+
+h1, h2, h3 { color: var(--title-color); }
+
+ul {
+  list-style: none;
+}
+
+a { text-decoration: none; color: var(--text-color); }
+
+a.btn { padding: 15px; background: var(--main-color); color: var(--white-color); border-radius: 5px; margin: 10px; }
+
+button { cursor: pointer; border: none; outline: none; }
+
+img { max-width: 100%; height: auto;}
+
+
+.section{
+  margin: 100px 0;
+}
+
+.section-title{
+  text-align: center;
+  font-size: var(--h2-font-size);
+  margin: 20px 0;
+}
+.section-title i{
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+#theme-button
+{
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+/*=============== 3- NavBar ===============*/
+
+
+.header {
+  padding: 15px 100px;
+  border-bottom: 1px solid #fff;
+  position: fixed;
+  width: 100%;
+  background-color: var(--body-color);
+  z-index: 100;
+}
+.header .navbar
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+.header .navbar .navLinks
+{
+  display: flex;
+  direction: rtl;
+  justify-content: flex-start;
+}
+.header .navbar .navLinks li a
+{
+  margin-right: 5px;
+  padding: 5px 10px;
+  color: var(--white-color);
+  transition: .3;
+}
+.header .navbar .navLinks li a:hover
+{
+  border-radius: 5px;
+  background-color: var(--main-color);
+}
+.header .navbar .nevMenu{
+  display: none;
+}
+
+
+
+
+/* For large devices */
+@media only screen and (max-width: 1320px) {
+  .header {
+    padding: 15px 50px;
+  }
+}
+
+/* For medium devices */
+@media only screen and (max-width: 1100px) {
+  .header {
+    padding: 15px 30px;
+  }
+}
+
+/* For small devices */
+@media only screen and (max-width: 900px) {
+  .header .navbar .nevMenu {
+      display: block;
+      cursor: pointer;
+      font-size: 2rem;
+    }
+  .header .navbar .navLinks{
+    display: block;
+    text-align: center;
+    position: absolute;
+    background-color: var(--balck-color);
+    width: 100%;
+    top: 56px;
+    height: 0;
+    left: 0;
+    padding: 40px 0 0 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s;
+  }
+  .header .navbar .navLinks.active {
+    opacity: 1;
+    visibility:visible;
+    height: 330px;
+  }
+  .header .navbar .navLinks li a
+  {
+    display: block;
+    margin: 25px auto;
+    width: fit-content;
+  }
+}
+
+
+
+/*=============== 4- Home ===============*/
+
+
+
+
+.home
+{
+  padding: 7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.home .info{
+  text-align: center;
+}
+.home .info span:first-of-type{
+  font-size: 2rem;
+}
+.home .info span:last-of-type{
+  font-size: 3.5rem;
+}
+.home .info img{
+  width: 70%;
+}
+.home .icons{
+  padding-top: 1rem;
+  text-align: center;
+  font-size: 3.5rem;
+}
+.home .image {
+  display: flex;
+  justify-content: center;
+}
+.home .image .handel
+{
+  display: flex;
+  justify-content: center;
+  width: 400px;
+  background-image: linear-gradient(225deg,
+  hsla(var(--first-hue),100%,100%,1),
+  hsla(var(--first-hue), 100%, 100%, .2)
+  );
+  border-radius: 10rem 10rem 0 0;
+}
+.home .image img{
+  width: 92%;
+  height: 100%;
+}
+
+.particles-js-canvas-el{
+  position: absolute;
+  z-index: -1;
+}
+
+
+
+
+/*=============== 5- Slider ===============*/
+
+.card {
+  padding: 10px;
+  background-color: var(--white-color);
+  color: var(--balck-color);
+  position: relative;
+}
+.card-content
+{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+.card-content h2{
+  color: var(--balck-color);
+}
+.card-content > a{
+  padding: 10px;
+  border: 2px dotted var(--main-color);
+  margin: 10px;
+}
+.card::before{
+  content: "";
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  height: 97%;
+  width: 50%;
+  z-index:-1;
+  background-color: var(--white-color);
+  transform: rotate(-7deg);
+}
+.card::after{
+  content: "";
+  position: absolute;
+  right: 0px;
+  top: 0;
+  height: 50%;
+  width: 97%;
+  z-index:-1;
+  background-color: var(--white-color);
+  transform: rotate(7deg);
+}
+.slide-content{
+  margin: 0 40px;
+}
+.swiper-arrow
+{
+  font-size: 2rem;
+  border-radius: 50%;
+  background-color: var(--main-color);
+  color: var(--white-color);
+  border: 3px solid var(--white-color);
+}
+.swiper-pagination-bullet
+{
+  background-color: var(--main-color);
+  opacity: .5;
+}
+.swiper-pagination-bullet-active-main
+{
+  background-color: var(--main-color);
+  opacity: 1;
+}
+
+
+/*=============== 6- Filter Section ===============*/
+.filter-link{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--white-color);
+  flex-wrap: wrap;
+}
+.filter-link li{
+  padding: 5px 20px;
+  color: var(--white-color);
+  letter-spacing: .5px;
+  cursor: pointer;
+}
+.filter-link .active{
+  background-color: var(--white-color);
+  color: var(--balck-color);
+}
+.filter .filter-box{
+  width: 330px;
+  padding: 15px;
+  border: 1px solid var(--balck-color);
+}
+.filter .filter-box img{
+  width: 100%;
+  height: 100%;
+}
+
+
+
+
+
+/*=============== 7- Animation Section ===============*/
+
+
+.animation .image-hover
+{
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+  color:var(--white-color);
+}
+.animation .image-hover .title
+{
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  padding:5px 10px 10px ;
+  background-color: var(--balck-color);
+}
+.animation .image-hover .title::before,
+.animation .image-hover .title::after
+{
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 325px;
+  background-color: red;
+
+}
+.animation .image-hover .title::before
+{
+  top: 0;
+  right: -40px;
+  transform: translate(100%);
+}
+.animation .image-hover .title::after
+{
+  bottom: 0;
+  right: 20px;
+  transform: translate(-100%);
+}
+.animation .image-hover .title div::before,
+.animation .image-hover .title div::after
+{
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 325px;
+  background-color: red;
+
+}
+.animation .image-hover .title div::before
+{
+  top: 0;
+  right: 0;  
+  transform: translateY(100%);
+}
+.animation .image-hover .title div::after
+{
+  bottom:  0;
+  left: 0;  
+  transform: translateY(-100%);
+}
+.animation .image-hover .hide-parg{
+  position: absolute;
+  bottom: 33%;
+  left: 0;
+  padding: 5px 10px;
+  text-align: center;
+  opacity: 0;
+}
+.animation .image-hover:hover img {
+  zoom: 1;
+  filter:alpha(opacity-35);
+  opacity: .35;
+}
+.animation .image-hover:hover .title::before,
+.animation .image-hover:hover .title::after,
+.animation .image-hover:hover .title div::before,
+.animation .image-hover:hover .title div::after
+{
+  transform: translate(0);
+  right: 0;
+}
+.animation .image-hover:hover .title::before,
+.animation .image-hover:hover .title::after
+{
+  transition-delay: .15s;
+}
+.animation .image-hover:hover .hide-parg
+{
+  opacity: 1;
+  transition-delay: .2s;
+}
+.animation .image-hover *,
+.image-hover *::before,
+.image-hover *::after
+{
+  transition: all .55s ease-in-out;
+}
+
+
+
+
+
+
+/*=============== 8- Crud Section ===============*/
+
+.crud
+{
+  direction: rtl;
+}
+.crud input
+{
+  border: 1px solid var(--sec-color);
+  background-color: var(--body-color);
+  color: var(--white-color);
+  width: 100%;
+  border-radius: 25px;
+  outline: none;
+  padding: 15px;
+  margin-bottom: 1.5rem;
+}
+.crud span
+{
+  position: absolute;
+  top: -20px;
+  right: 20%;
+  border: 1px solid var(--sec-color);
+  padding: 10px;
+  border-radius: 25px;
+  background-color: var(--body-color);
+  font-size: 10px;
+}
+/* crud table */
+.crud table{
+  width: 100%;
+  border: 1px dotted var(--white-color);
+  color: var(--white-color);
+  border-collapse: collapse;
+}
+.crud th{
+  text-align: center;
+  padding: 15px;
+  font-weight: bold;
+  font-size: 15px;
+  background-color: var(--main-color);
+  color: var(--white-color);
+}
+.crud td
+{
+  text-align: center;
+  padding: 15px;
+}
+.crud tr
+{
+  border: 1px solid var(--white-color);
+}
+.crud button
+{
+  padding: 10px;
+  background-color: var(--main-color);
+  color: var(--white-color);
+  border-radius: 15px;
+}
+.crud .crudbtn
+{
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+.crud .crudbtn button
+{
+  padding: 10px 2rem;
+}
+
+
+
+/*=============== 9- Contact Form  ===============*/
+.form .contact-form
+{
+  justify-content: center;
+  text-align: center;
+}
+.form .contact-form button
+{
+  padding: 10px;
+  border-radius: 5px ;
+  background-color: var(--main-color);
+  color: var(--balck-color);
+}
+.form .contact-form textarea
+{
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  text-align: right;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+.form .contact-form textarea:focus
+{
+  outline: none;
+}
+
+
+/* 10 - products page  */
+
+
+
+/* ==============  Search ========== */
+
+.search .search-input
+{
+  width: 100%;
+  outline: none;
+  padding: 15px;
+  text-align: right;
+  border-radius: 15px;
+  border: 5px solid var(--sec-color);
+}
+.search .cart_product
+{
+  background-color: var(--white-color);
+  margin-top: 1rem;
+  color: var(--balck-color);
+  border-radius: 15px 15px 0 0;
+  text-align: center;
+}
+.search .cart_product
+img{
+  border-radius: 15px 15px 0 0;
+  height: 13rem;
+  object-fit: cover;
+}
+.search .cart_product h2{
+  color: var(--balck-color);
+}
+.search .cart_product button
+{
+  padding: 15px;
+  border-radius: 15px;
+  background-color: var(--main-color);
+  color: var(--white-color);
+  margin: 10px;
+}
+
+.cart .cart_content{
+  text-align: center;
+  border: 5px solid var(--main-color);
+  padding: 15px;
+}
+
+
+/* For large devices */
+@media only screen and (max-width: 1320px) {
+
+}
+
+/* For medium devices */
+@media only screen and (max-width: 1100px) {
+
+}
+
+
+/* For small devices */
+@media only screen and (max-width: 900px) {
+
+}
+
+
